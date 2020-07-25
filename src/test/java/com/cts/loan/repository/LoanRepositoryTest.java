@@ -232,7 +232,7 @@ class LoanRepositoryTest {
 		assertThat(loan.size()).isZero();
 	}
 	
-	@Test
+	//@Test
 	void testReturnMultipleRecordsForSameBorrowerNameAndLoanNumberAndLoanAmountIfAvailableInDB(){
 		Loan searchLoan=new Loan();
 		searchLoan.setBorrowerName("Perona");

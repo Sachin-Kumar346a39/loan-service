@@ -1,4 +1,16 @@
+message: 'Hello from local'
 spring:
   application:
     name: loan-service
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydb
+    username: root
+    password: root
+    
+  jpa:
+    show-sql: true  
+  
+server:
+  port: 9092
    

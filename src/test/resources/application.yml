@@ -1,3 +1,4 @@
+message: 'Hello from local'
 spring:
   application:
     name: loan-service

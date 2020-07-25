@@ -7,20 +7,22 @@ plugins {
 group = 'com.cts'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-
+//apply plugin: 'project-report'
 repositories {
 	mavenCentral()
 }
 
 ext {
 	set('springCloudVersion', "Hoxton.SR6")
+	set('springCloudServicesVersion', "2.2.1.RELEASE")
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-config-client")
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
     
@@ -33,9 +35,15 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
 	}
 }
 
 test {
 	useJUnitPlatform()
 }
+
+configurations {
+    //all*.exclude group: 'org.springframework.security'
+    //all*.exclude group: 'org.springframework.security.oauth'
+} 

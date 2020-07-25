@@ -3,6 +3,7 @@ package com.cts.loan.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -42,7 +43,7 @@ public class LoanController {
 
 		return new ResponseEntity<Loan>(lLoan, status);
 	}
-	
+
 	@PostMapping("/updateLoan/{loanId}")
 	public ResponseEntity<Loan> updateLoan(@PathVariable int loanId, @Valid @RequestBody Loan loan) {
 
@@ -58,16 +59,16 @@ public class LoanController {
 
 		return new ResponseEntity<Loan>(lLoan, status);
 	}
-	
+
 	@PostMapping("/searchLoan")
 	public ResponseEntity<Loan> searchLoan(@Valid @RequestBody Loan loan) {
 
 		HttpStatus status = HttpStatus.OK;
 		Loan loanInfo = null;
-		
+
 		try {
-			loanInfo=loanService.searchLoanInfo(loan);
-			
+			loanInfo = loanService.searchLoanInfo(loan);
+
 		} catch (Exception e) {
 			log.error("LoanController Exception: ", e.getMessage());
 			status = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -75,6 +76,13 @@ public class LoanController {
 
 		return new ResponseEntity<Loan>(loanInfo, status);
 	}
-	
+
+	@Value("${message}")
+	private String message;
+
+	@RequestMapping("/message")
+	String getMessage() {
+		return this.message;
+	}
 
 }
