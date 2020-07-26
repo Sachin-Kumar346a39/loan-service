@@ -31,28 +31,28 @@ class LoanRepositoryTest {
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		expectedLoan = new Loan();
-		expectedLoan.setBorrowerName("Borrower 1");
+		expectedLoan.setBorrowerName("John");
 		expectedLoan.setAddressLine1("202 HARTNELL");
 		expectedLoan.setAddressLine2("PL");
 		expectedLoan.setCity("Sacramento");
 		expectedLoan.setState("CA");
 		expectedLoan.setZip(97978);
-		expectedLoan.setLoanNumber("001");
-		expectedLoan.setLoanAmount(10000.0);
+		expectedLoan.setLoanNumber("1234A");
+		expectedLoan.setLoanAmount(1234567.0);
 		expectedLoan.setLoanTerm((float) 5);
 		expectedLoan.setLienType("SALE");
 		expectedLoan.setLienID("001");
 		expectedLoan.setLegalDescription("LIEN");
 
 		updatedLoan = new Loan();
-		updatedLoan.setBorrowerName("Borrower 1");
+		updatedLoan.setBorrowerName("John");
 		updatedLoan.setAddressLine1("202 HARTNELL");
 		updatedLoan.setAddressLine2("PL");
 		updatedLoan.setCity("Sacramento");
 		updatedLoan.setState("CA");
 		updatedLoan.setZip(97978);
-		updatedLoan.setLoanNumber("001");
-		updatedLoan.setLoanAmount(10000.0);
+		updatedLoan.setLoanNumber("1234A");
+		updatedLoan.setLoanAmount(1234567.0);
 		updatedLoan.setLoanTerm((float) 5);
 		updatedLoan.setLienType("SALE");
 		updatedLoan.setLienID("001");
@@ -67,6 +67,8 @@ class LoanRepositoryTest {
 		searchedLoanFields.setBorrowerName("John");
 		searchedLoanFields.setLoanNumber("1234A");
 		searchedLoanFields.setLoanAmount(1234567.0);
+		
+		loanRepository.save(expectedLoan);
 	}
 
 	@Test
